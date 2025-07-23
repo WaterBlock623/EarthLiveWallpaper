@@ -11,8 +11,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
-    color: #e0f2ff;
 }
 
 .container {
@@ -32,23 +30,38 @@ body {
     align-items: center;
     max-width: 100%;
     max-height: 100%;
-    transition: transform 0.3s ease;
+    /* transition: transform 0.3s ease; */
 }
 
-#image-grid {
+.image-grid {
+    position: absolute;
     display: grid;
     gap: 0 !important;
-    overflow: hidden;
-    position: relative;
-    max-width: 100%;
-    max-height: 100%;
-    transition: transform 0.3s ease;
+    /* 移除 top/left 定位 */
+    /* transition: opacity 0.5s ease; */
+    width: max-content;
+    height: max-content;
+    margin: auto;
+}
+
+#image-grid-front {
+    z-index: 1;
+    opacity: 1;
+}
+
+#image-grid-back {
+    z-index: 0;
+    opacity: 0;
 }
 
 .grid-item {
     position: relative;
     overflow: hidden;
-    margin: -0.5px;
+    /* 修复网格间隙 */
+    /* margin: calc(-1000px / 1vh); */
+    margin: -1px;
+    width: 550px;
+    height: 550px;
 }
 
 .grid-item img {
@@ -56,14 +69,6 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* min-width: calc(100% + 2px);
-    min-height: calc(100% + 2px); */
-    transition: opacity 0.5s ease;
+    /* transition: opacity 0.5s ease; */
     opacity: 0;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
 }
